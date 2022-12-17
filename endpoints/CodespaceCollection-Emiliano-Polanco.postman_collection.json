@@ -1,0 +1,171 @@
+{
+  "info": {
+    "_postman_id": "94e25001-c252-422b-8577-2cdcb8bafafd",
+    "name": "CodespaceCollection-Emiliano-Polanco",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "javascript",
+      "item": [
+        {
+          "name": "Create JavaScript snippet",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"language\":\"JavaScript\",\r\n    \"textCode\": \"const tokenValidator = async (req, res, next) => {\\r\\n  const headerAuth = req.header(\\\"Authorization\\\");\\r\\n  if (!headerAuth) {\\r\\n    const error = new Error(\\\"The token is missing\\\");\\r\\n    error.status = 401;\\r\\n    next(error);\\r\\n  } else {\\r\\n    const token = headerAuth.replace(\\\"Bearer \\\", \\\"\\\");\\r\\n    try {\\r\\n      jsonwebtoken.verify(token, process.env.SECRET_HEHE);\\r\\n      next();\\r\\n    } catch (error) {\\r\\n      error.status = 401;\\r\\n      next(error);\\r\\n    }\\r\\n  }\\r\\n};\",\r\n    \"title\": \"token validator\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{origin}}javascript/create",
+              "host": ["{{origin}}javascript"],
+              "path": ["create"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get random JavaScript snippet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{origin}}javascript",
+              "host": ["{{origin}}javascript"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Edit a JavaScript snippet",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiR2VyZ2VNYXBNYXN0ZXIiLCJ1c2VybmFtZSI6Imdlb3JnZSIsIl9pZCI6IjYyMjhhMjA1MmNjNzY2NjJiM2I4Yzk5MCIsImlhdCI6MTY0NjkyMzAxMX0.h4dTBmeQhv4KJ3TO0SAIGppu_J3ijO6fmnaIiLIkV7o",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{origin}}javascript/edit",
+              "host": ["{{origin}}javascript"],
+              "path": ["edit"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "typescript",
+      "item": []
+    },
+    {
+      "name": "user",
+      "item": [
+        {
+          "name": "Get user collection of snippets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{origin}}user/snippets?id=62275f48d38627391232b5c1",
+              "host": ["{{origin}}user"],
+              "path": ["snippets"],
+              "query": [
+                {
+                  "key": "id",
+                  "value": "62275f48d38627391232b5c1"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "users",
+      "item": [
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"username\":\"emilio\",\r\n    \"password\":\"pass123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{origin}}users/login",
+              "host": ["{{origin}}users"],
+              "path": ["login"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Register a new User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"emiliano\",\r\n    \"lastname\": \"polanco\",\r\n    \"username\": \"emilio\",\r\n    \"email\":\"emilianopolanco5@gmail.com\",\r\n    \"password\":\"pass123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{origin}}users/register",
+              "host": ["{{origin}}users"],
+              "path": ["register"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "origin",
+      "value": "https://apirest-website.onrender.com/",
+      "type": "string"
+    }
+  ]
+}

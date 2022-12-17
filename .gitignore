@@ -1,0 +1,6 @@
+.env
+scanner
+node_modules
+coverage
+.scannerwork
+.idea

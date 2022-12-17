@@ -1,0 +1,21 @@
+name: Testing on push
+
+on: push
+
+env:
+  SECRET: ${{secrets.SECRET}}
+
+jobs:
+  test:
+    name: Test passes
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+
+      - name: Install modules
+        run: npm ci
+
+      - name: Testing
+        run: npm test
