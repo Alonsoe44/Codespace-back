@@ -5,7 +5,7 @@ const app = require("./server");
 const startServer = require("./server/startServer");
 
 const serverPort = process.env.PORT;
-const loginConectionCredentials = process.env.LOGIN_CREDENTIALS;
+const loginConectionCredentials = process.env.LOGIN_CREDENTIALS || "0.0.0.0:$PORT";
 
 (async () => {
   try {
